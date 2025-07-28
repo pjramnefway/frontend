@@ -1,8 +1,2 @@
 node_modules/
 build/
-
-# Ignore package-lock.json
-package-lock.json
-
-# Ignore package-lock.json
-package.json
