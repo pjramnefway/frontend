@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { useNavigate,Link } from 'react-router-dom';
 import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from 'react-icons/fa';
 import './AdminLogin.css';
@@ -7,38 +7,34 @@ import axios from 'axios';
 
 
 
-const AdminLogin = () => {
+const dashBoardPath = 
+{
+  nefway_admin:'/Nefwayrideadmin/dashboard',
+  super_corporate_admin : '/Corporatesuperuser/dashboard',
+  corporate_admin:'/Corporateuser/dashboard',
+  vendor_admin:'/Vendoruser/dashboard',
+  corporate_employee:'',
+  vendor_employee:''
+}
+
+
+
+
+const AdminLogin = () => 
+{
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
 
-  const dashBoardPath = 
-  {
-      nefway_admin:'/Nefwayrideadmin/dashboard',
-      super_corporate_admin : '/Corporatesuperuser/dashboard',
-      corporate_admin:'/Corporateuser/dashboard',
-      vendor_admin:'/Vendoruser/dashboard',
-      corporate_employee:'',
-      vendor_employee:''
-  }
-
-/*   const adminUsers = [
-    { username: 'user@admin.com', password: 'admin123', dashboardPath: '/Corporateuser/dashboard' },
-    { username: 'vendor@admin.com', password: 'vendor123', dashboardPath: '/Vendoruser/dashboard' },
-    { username: 'user@superadmin.com', password: 'superadmin123', dashboardPath: '/Corporatesuperuser/dashboard' },
-    // { username: 'vendor@superadmin.com', password: 'supervendor123', dashboardPath: '/Vendorsuperuser/dashboard' },
-    { username: 'admin@nefwayride.com', password: 'nefwayride123', dashboardPath: '/Nefwayrideadmin/dashboard' },
-    // { username: 'admin@nefway.com', password: 'nefway123', dashboardPath: '/Nefwayadmin/dashboard' },
-  ]; */
-
- const handleSubmit = async (e) => {
+ 
+const handleSubmit = async (e) => {
   e.preventDefault();
 
   try {
     const response = await axios.post(
-      'http://127.0.0.1:9800/api/users/login',
+      'http://132.156.145.6:9800/api/users/login',
       { email, password },
       { withCredentials: true } // Optional — if your server sets cookies
     );
@@ -71,7 +67,7 @@ const AdminLogin = () => {
   return (
 
     
-<div className="login-container">
+    <div className="login-container">
       <div className="login-right">
      <img src={rightImage} alt="Right side decorative" className="right-image" />
 
