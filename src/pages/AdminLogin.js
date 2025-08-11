@@ -17,7 +17,7 @@ const dashBoardPath =
   vendor_employee:''
 }
 
-
+/* username:nefway@admin.com pwd:hashedpassword123 */
 
 
 const AdminLogin = () => 
